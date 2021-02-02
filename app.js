@@ -21,4 +21,13 @@ const server = app.listen(port, () => {
     console.log(`app is running on ${port}`);
 });
 
+// messenger is the connection manager - like a switchboard operator
 messenger.attach(server);
+
+messenger.on('connection', (socket) => {
+    console.log(`a user connected: ${socket.id}`);
+
+    socket.on('discounnect', () => {
+        console.log('a user has disconnected');
+    })
+});
