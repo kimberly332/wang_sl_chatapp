@@ -8,6 +8,8 @@ const app = express();
 // let currUser = { socketID:'', username: '', avatar: ''};
 // let userList = [];
 // let sIDList = [];
+// let allUsers = [];
+let usersDict = {};
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/chat", (req, res) => {
-    res.sendFile(path.join(__dirname, "chat.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
     // res.send('go to signin');
 });
 
@@ -69,7 +71,7 @@ messenger.on('connection', (socket) => {
     
     // send the connected user their assigned ID
     // socket.emit('connected', { sID: `${socket.id}`, message: 'new connection', nickname: user.nickname, avatar: user.avatar});
-    socket.emit('connected', { sID: `${socket.id}`, message: 'new connection'});//, username: currUser.username, avatar: currUser.avatar, allUsers: userList});
+    socket.emit('connected', { sID: `${socket.id}`, message: 'new connection'});//, allUsers});//, username: currUser.username, avatar: currUser.avatar, allUsers: userList});
 
     socket.on('chatmessage', function(msg) {
         console.log(msg);
@@ -77,7 +79,19 @@ messenger.on('connection', (socket) => {
         messenger.emit('message', { id: socket.id, message: msg });
     });
 
-    socket.on('discounnect', () => {
+    socket.on('login', function(user) {
+        console.log('login ');
+        console.log(user);
+        
+        usersDict[`${socket.id}`] = user;
+        messenger.emit('render', usersDict);
+    });
+
+    socket.on('disconnect', () => {
         console.log('a user has disconnected');
+
+        delete usersDict[`${socket.id}`]; 
+
+        messenger.emit('render', usersDict);
     })
 });

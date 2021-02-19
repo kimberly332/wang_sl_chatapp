@@ -1,109 +1,114 @@
-#bg {
-    background: url("../images/bg.jpg") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+body {
 
-    .grid-container {
-        display: grid;
-        height: 100vh;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; // 6 columns
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr; // 5 columns
-        grid-gap: 0.5em;
+    #app {
 
-        h1 {
-            text-align: center;
-            align-items: center;
-            grid-column: 3/5;
-            grid-row: 2/5;
-        }
+        .grid-container {
+            background: url("../images/bg.jpg") no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
 
-        #login-form {
-            background-color: rgba(255, 255, 255, 0.7);
-            grid-column: 4/6;
-            grid-row: 2/5;
-            text-align: center;
-            align-items: center;
-            border-radius: 5px;
+            display: grid;
+            height: 100vh;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; // 6 columns
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr; // 5 columns
+            grid-gap: 0.5em;
 
-            svg {
-                height: 20%;
-                margin-top: 8%;
+            h1 {
+                text-align: center;
+                align-items: center;
+                grid-column: 3/5;
+                grid-row: 2/5;
             }
 
-            h2 {
-                margin-top: 2%;
-            }
-
-            #nname {
-                font-family: 'Josefin Sans', serif;
-                font-size: 1rem;
-                height: 11%;
-                width: 70%;
-                margin-top: 8%;
-                padding-left: 5%;
+            #login-form {
+                background-color: rgba(255, 255, 255, 0.7);
+                grid-column: 4/6;
+                grid-row: 2/5;
+                text-align: center;
+                align-items: center;
                 border-radius: 5px;
-            }
 
-            select {
-                font-family: 'Josefin Sans', serif;
-                font-size: 1rem;
-                flex: 1;
-                padding-left: 5%;
-                cursor: pointer;
-            }
-            /* Remove IE arrow */
-            select::-ms-expand {
-                display: none;
-            }
-            /* Custom Select */
-            .select {
-                position: relative;
-                display: flex;
-                width: 70%;
-                height: 11%;
-                line-height: 3;
-                overflow: hidden;
-                margin-top: 3%;
-                margin-left: 15%;
-                border-radius: .25em;
-            }
-            /* Arrow */
-            .select::after {
-            content: '\25BC';
-                position: absolute;
-                top: 0;
-                right: 0;
-                padding: 0 1em;
-                background: #34495e;
-                cursor: pointer;
-                pointer-events: none;
-                transition: .3s all ease;
-            }
-            /* Transition */
-            .select:hover::after {
-                color: #f2c66d;
-            }              
+                img {
+                    width: 20%;
+                    margin-top: 8%;
+                }
 
-            .button {
-                // grid-column: 4/6;
-                grid-row: 4/5;
-                text-decoration: none;
-                font-family: 'Josefin Sans', serif;
-                text-transform: uppercase;
-                background-color: rgb(74, 165, 132);
-                padding: 5%;                
-                margin: 5% 30%;
-                cursor: pointer;
-                transition: 0.3s; 
-                border-radius: 50px;
-            }
+                h2 {
+                    margin-top: 2%;
+                }
 
-            .button:hover {
-                background-color: #f2c66d;
-                color: #495868;
+                #nname {
+                    font-family: 'Josefin Sans', serif;
+                    font-size: 1rem;
+                    height: 11%;
+                    width: 70%;
+                    margin-top: 8%;
+                    padding-left: 5%;
+                    border-radius: 5px;
+                }
+
+                select {
+                    font-family: 'Josefin Sans', serif;
+                    font-size: 1rem;
+                    flex: 1;
+                    padding-left: 5%;
+                    cursor: pointer;
+                }
+                /* Remove IE arrow */
+                select::-ms-expand {
+                    display: none;
+                }
+                /* Custom Select */
+                .select {
+                    position: relative;
+                    display: flex;
+                    width: 70%;
+                    height: 11%;
+                    line-height: 3;
+                    overflow: hidden;
+                    margin-top: 3%;
+                    margin-left: 15%;
+                    border-radius: .25em;
+                }
+                /* Arrow */
+                .select::after {
+                content: '\25BC';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    background: #34495e;
+                    cursor: pointer;
+                    pointer-events: none;
+                    transition: .3s all ease;
+                }
+                /* Transition */
+                .select:hover::after {
+                    color: #f2c66d;
+                }              
+
+                .button {
+                    // grid-column: 4/6;
+                    grid-row: 4/5;
+                    text-decoration: none;
+                    font-family: 'Josefin Sans', serif;
+                    text-transform: uppercase;
+                    background-color: rgb(74, 165, 132);
+                    padding: 5%;                
+                    margin: 5% 30%;
+                    cursor: pointer;
+                    transition: 0.3s; 
+                    border-radius: 50px;
+                    overflow: auto;
+                }
+
+                .button:hover {
+                    background-color: #f2c66d;
+                    color: #495868;
+                }
             }
         }
-    }
+    }    
 }

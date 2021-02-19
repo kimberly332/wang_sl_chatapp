@@ -2,7 +2,7 @@ import ChatMessage from "./components/TheMessageComponent.js";
 import Avatar from "./components/TheAvatarComponent.js";
 import EmojiBtn from "./components/TheEmojiBtn.js";
 import SubmitBtn from "./components/TheSubmitBtn.js";
-// import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
+import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 
 
 (() => {
@@ -12,6 +12,10 @@ import SubmitBtn from "./components/TheSubmitBtn.js";
     
     // load the socket library and make a connection
     const socket = io();
+
+    // load audio
+    const enterAudio = new Audio("../audio/enter.mp3");
+    const sendMsgAudio = new Audio("../audio/send-message.mp3");
 
     // messenger service event handling -> incoming from the manager
     function setUserId({sID, message}){//, username, avatar, allUsers}) {
@@ -29,10 +33,28 @@ import SubmitBtn from "./components/TheSubmitBtn.js";
         // vm.userList = allUsers;
         // vm.userList.push({socketID: sID, username: username, avatarPhoto: avatar});
         // console.log(vm.userList);
+
+        // let currUser = {socketID: sID, username: vm.username, avatar: vm.avatar};
+        // vm.usersDict[sID] = [vm.username, vm.avatar];
+
     }
 
     function appendMessage(message) {
         vm.messages.push(message);
+    }
+
+    function dc({sID, message, allUsers}) {
+        console.log("hehhhhhhh");
+        console.log(sID);
+        console.log(message);
+        console.log(allUsers);
+    }
+
+    function r(allUsers) {
+        console.log('all users : ');
+        // console.log(allUsers);
+        vm.usersDict = allUsers;
+        console.log(vm.usersDict);
     }
 
     const vm = new Vue({
@@ -42,8 +64,11 @@ import SubmitBtn from "./components/TheSubmitBtn.js";
             username: "",
             socketID: "",
             message: "",
-            avatar: ""//,
-            // userList: []
+            avatar: "",
+            hasLogin: false,
+            // usersDict: {} // key: socketID value: {username avatar}
+            usersDict: {}
+            // usersDict: []
         },
 
         created: function() {
@@ -60,9 +85,11 @@ import SubmitBtn from "./components/TheSubmitBtn.js";
                 if (this.message === "") {
                     console.log("no message: cannot dispatch message");
                 } else {
+                    sendMsgAudio.play();
                     socket.emit('chatmessage', msg);
 
                     this.message = "";
+
                 }
             },
             
@@ -81,20 +108,54 @@ import SubmitBtn from "./components/TheSubmitBtn.js";
             // trigger submit by pressing ENTER
             triggerSubmitByEnter() {
                 console.log("press enter .... send");
-                this.dispatchMessage({ content: this.message, name: this.username || "Anonymous" }) // nick
-            }
+                this.dispatchMessage({ content: this.message, name: this.username}) // nick
+                // sendMsgAudio.play();
+            },
+
+            // click join btn in login page
+            clickJoinBtn() {
+                console.log('Join Chat ');
+                this.hasLogin = true; 
+                // this.username = 
+                console.log(this.username);
+                
+                let select = document.getElementById("slct");
+                console.log(select.value);
+
+                if (this.username === "") {
+                    this.username = "Anonymous";
+                }
+
+                if (select.value === "0") { // user did not select favourite food
+                    let rand = Math.floor(Math.random() * 10) + 1; // generate a random number 1-10
+                    this.avatar = `avatar-${rand}`;
+                } else { 
+                    this.avatar = `avatar-${select.value}`;
+                }
+
+                // update userDict
+                // this.usersDict[this.socketID] = [this.username, this.avatar]
+                // console.log(this.usersDict);
+                // console.log(Object.keys(this.usersDict).length);
+                socket.emit('login', [this.username, this.avatar]);
+
+                enterAudio.play();
+            },
+            
         },
 
         components: {
             newmessage: ChatMessage,
             newavatar: Avatar,
             emojibtn: EmojiBtn,
-            submitbtn: SubmitBtn//,
-            // displayavatar: DisplayAvatar
+            submitbtn: SubmitBtn,
+            displayavatar: DisplayAvatar
 
         }
     }).$mount('#app');
 
     socket.addEventListener("connected", setUserId);
     socket.addEventListener('message', appendMessage);
+    // socket.addEventListener('disconnected', dc);
+    socket.addEventListener('render', r);
 })();
