@@ -11,15 +11,10 @@ export default {
     </article>
     `,
 
-
-    // created: function() {
-    //     console.log('messga ecomponent its alive!!');
-    // },
-
     data: function() {
         return {
             matchedID: this.socketid == this.msg.id,
-            time: new Date().toLocaleTimeString(),
+            time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
             getMsgAudio: new Audio("../../audio/get-message.mp3")
         }
     },
@@ -28,7 +23,7 @@ export default {
         console.log('msg component created');
         console.log(this.matchedID);
         if (this.matchedID === false) { // you receive message
-            getMsgAudio.play();
+            this.getMsgAudio.play();
         }
     },
 }

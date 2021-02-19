@@ -73,7 +73,7 @@
 
       <section class="message-wrapper">
         <textarea @keyup.enter="triggerSubmitByEnter" @click.prevent="clickInputArea" v-model="message" class="text-message" placeholder="Start your message here... you can also press ENTER to send !"></textarea>
-        <submitbtn :key="message" :msg="message" :username="username" @dispatchmsg="dispatchMessage"></submitbtn>
+        <submitbtn :key="message" :msg="message" :username="username" :avatar="avatar" @dispatchmsg="dispatchMessage"></submitbtn>
         <emojibtn @addemojitomessage="updateMessage"></emojibtn>
       </section>
     </section>
