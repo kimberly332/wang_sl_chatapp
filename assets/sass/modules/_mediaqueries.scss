@@ -1,0 +1,62 @@
+@media only screen and (max-width: 768px) {
+    #bg {
+        .grid-container {
+
+            #login-form {
+                // background-color: red;
+                grid-column: 2/6;
+                grid-row: 2/5;
+
+                #nname {
+                    margin-top: 6%;
+                    padding-left: 5%;
+                }
+
+                .button {
+                    padding: 3%;                
+                    margin: 4% 30%;
+                }
+            }
+        }
+    }
+
+    p {
+        margin-top: 12%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    #bg {
+        .grid-container {
+
+            #login-form {
+                background-color: rgba(255, 255, 255, 0.5);
+                grid-column: 1/7;
+                grid-row: 1/6;
+
+                svg {
+                    margin-top: 20%;
+                }
+
+                #nname {
+                    margin-top: 6%;
+                    padding-left: 5%;
+                    height: 7%;
+                }
+
+                .select {
+                    height: 7%;
+                }
+
+                .button {
+                    padding: 5%;                
+                    margin: 5% 30%;
+                }
+            }
+        }
+    }
+
+    p {
+        margin-top: 20%;
+    }
+}
