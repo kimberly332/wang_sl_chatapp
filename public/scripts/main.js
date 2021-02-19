@@ -8,8 +8,6 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 (() => {
     console.log('fired');
 
-    // console.log(x);
-    
     // load the socket library and make a connection
     const socket = io();
 
@@ -18,24 +16,10 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
     const sendMsgAudio = new Audio("../audio/send-message.mp3");
 
     // messenger service event handling -> incoming from the manager
-    function setUserId({sID, message}){//, username, avatar, allUsers}) {
+    function setUserId({sID, message}){
         // incoming connected event with data
         // debugger;
-        // console.log('hereeeeeeee');
-        // console.log(sID);
-        // console.log(message);
-        // console.log(username);
-        // console.log(avatar);
-        // console.log(allUsers);
         vm.socketID = sID;
-        // vm.username = username || "Unknown";
-        // vm.avatar = avatar || "avatar-10.png";
-        // vm.userList = allUsers;
-        // vm.userList.push({socketID: sID, username: username, avatarPhoto: avatar});
-        // console.log(vm.userList);
-
-        // let currUser = {socketID: sID, username: vm.username, avatar: vm.avatar};
-        // vm.usersDict[sID] = [vm.username, vm.avatar];
 
     }
 
@@ -43,16 +27,9 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
         vm.messages.push(message);
     }
 
-    function dc({sID, message, allUsers}) {
-        console.log("hehhhhhhh");
-        console.log(sID);
-        console.log(message);
-        console.log(allUsers);
-    }
-
     function r(allUsers) {
         console.log('all users : ');
-        // console.log(allUsers);
+
         vm.usersDict = allUsers;
         console.log(vm.usersDict);
     }
@@ -66,9 +43,7 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
             message: "",
             avatar: "",
             hasLogin: false,
-            // usersDict: {} // key: socketID value: {username avatar}
-            usersDict: {}
-            // usersDict: []
+            usersDict: {} // key: socketID value: {username avatar}
         },
 
         created: function() {
@@ -77,12 +52,11 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 
         methods: {
 
-
             // when SubmitBtn component send data, trigger dispatchMessage to notice socket
             dispatchMessage(msg) {
 
                 // check if messsage is empty
-                if (this.message === "") {
+                if (this.message.trimStart() === "") {
                     console.log("no message: cannot dispatch message");
                 } else {
                     sendMsgAudio.play();
@@ -100,23 +74,21 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 
             // when EmojiBtn component send content(emoji), update message to display it
             updateMessage(content) {
-                
-                console.log('update message');
                 this.message += content;
             },
 
             // trigger submit by pressing ENTER
             triggerSubmitByEnter() {
                 console.log("press enter .... send");
-                this.dispatchMessage({ content: this.message, name: this.username}) // nick
-                // sendMsgAudio.play();
+                this.dispatchMessage({ content: this.message, name: this.username, avatar: this.avatar}) // nick
             },
 
             // click join btn in login page
             clickJoinBtn() {
                 console.log('Join Chat ');
+                
                 this.hasLogin = true; 
-                // this.username = 
+                
                 console.log(this.username);
                 
                 let select = document.getElementById("slct");
@@ -133,10 +105,6 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
                     this.avatar = `avatar-${select.value}`;
                 }
 
-                // update userDict
-                // this.usersDict[this.socketID] = [this.username, this.avatar]
-                // console.log(this.usersDict);
-                // console.log(Object.keys(this.usersDict).length);
                 socket.emit('login', [this.username, this.avatar]);
 
                 enterAudio.play();
@@ -156,6 +124,5 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 
     socket.addEventListener("connected", setUserId);
     socket.addEventListener('message', appendMessage);
-    // socket.addEventListener('disconnected', dc);
     socket.addEventListener('render', r);
 })();
