@@ -19,7 +19,16 @@ export default {
     data: function() {
         return {
             matchedID: this.socketid == this.msg.id,
-            time: new Date().toLocaleTimeString()
+            time: new Date().toLocaleTimeString(),
+            getMsgAudio: new Audio("../../audio/get-message.mp3")
         }
-    }
+    },
+
+    created: function() {
+        console.log('msg component created');
+        console.log(this.matchedID);
+        if (this.matchedID === false) { // you receive message
+            getMsgAudio.play();
+        }
+    },
 }
