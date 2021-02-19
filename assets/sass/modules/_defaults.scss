@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     background-color: $main-bg-color;
     color: $main-text-color;
@@ -17,21 +21,70 @@ body {
 a {
     display: block;
     color: white;
-    // text-decoration: none;
-
     margin: 1rem 0;
 }
 
-.new-message {
-    padding: 10px;
-    background-color: blue;
-    color: white;
-    border-radius: 8px;
-    float: left;
-    clear: both;
+.messages {
+
+    #messages {
+
+        .new-message {
+            max-width: 75%;
+            padding: 10px 13px;
+            background-color: #ff8d4f;
+            color: white;
+            border-radius: 8px;
+            float: left;
+            clear: both;
+            margin-left: 10%;
+            margin-top: 1%;
+        
+            img {
+                margin-left: 200%;
+            }
+        
+            p {
+                max-width: 100%;
+                margin-top: 8px;
+                text-align: left;
+                line-height: 20px;
+            }
+        
+            h6 {
+                text-align: right;
+                padding-top: 6px;
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+        
+        .my-message {
+            max-width: 75%;
+            background-color: #355c7d;
+            float: right;
+            margin-right: 10%;
+            margin-top: 1.5%;
+        }
+        
+        .new-avatar {
+            float: left;
+            width: 50px;
+            height: 50px;
+            // background-color: blue;
+            margin-right: 100%;
+            padding-left: 5%;
+            margin-top: -6.5%;
+        }
+
+        .my-avatar {
+            float: right;
+            width: 50px;
+            height: 50px;
+            // background-color: red;
+            margin-left: 100%;
+            padding-right: 9%;
+            margin-top: -6.5%;
+        }
+
+    }
 }
 
-.my-message {
-    background-color: green;
-    float: right;
-}
