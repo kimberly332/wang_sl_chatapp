@@ -13,28 +13,15 @@ export default {
         }
     },
 
-    created: function() {
-        console.log('submit btn created');
-    },
-
     methods: {
 
         // deliver data to parent - trigger submit by CLICKING
         triggerSubmitByClick() {
             console.log("click .... send");
+
             this.$emit('dispatchmsg', { content: this.msg, name: this.username, avatar: this.avatar });
         }
 
-        // clickEmojiBtn(event) {
-        //     console.log('click emoji btn');
-        //     this.emojiPicker.pickerVisible ? this.emojiPicker.hidePicker() : this.emojiPicker.showPicker(event.target);
-        // },
-
-        // // notice parent
-        // pickerOn(emoji) {
-        //     // delievr emoji to parent
-        //     this.$emit('addemojitomessage', emoji);
-        // }
     }
 
 }

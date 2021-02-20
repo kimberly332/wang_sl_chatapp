@@ -31,7 +31,7 @@
       <div id="login-form">
         <img src="../images/logo.png" alt="Hey Foodies Logo">
         <h2>Foodies Chat</h2>
-        <input v-model="username" type="text" id="nname" name="nickname" placeholder="Nickname">
+        <input v-model="username" type="text" id="uname" name="username" placeholder="Username">
         <div class="select">
           <select name="slct" id="slct" required>
             <option value="0" selected disabled>Favourite Food</option>
@@ -72,7 +72,7 @@
       </section>
 
       <section class="message-wrapper">
-        <textarea @keyup.enter="triggerSubmitByEnter" @click.prevent="clickInputArea" v-model="message" class="text-message" placeholder="Start your message here... you can also press ENTER to send !"></textarea>
+        <textarea @keypress.enter="triggerSubmitByEnter" v-model="message" class="text-message" placeholder="Start your message here... you can also press ENTER to send !"></textarea>
         <submitbtn :key="message" :msg="message" :username="username" :avatar="avatar" @dispatchmsg="dispatchMessage"></submitbtn>
         <emojibtn @addemojitomessage="updateMessage"></emojibtn>
       </section>
