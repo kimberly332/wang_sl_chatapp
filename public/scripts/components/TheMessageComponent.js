@@ -21,7 +21,6 @@ export default {
 
     created: function() {
         console.log('msg component created');
-        console.log(this.matchedID);
         if (this.matchedID === false) { // you receive message
             this.getMsgAudio.play();
         }

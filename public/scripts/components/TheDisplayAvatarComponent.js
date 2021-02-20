@@ -1,6 +1,5 @@
 export default {
     props: ['username', 'avatar'],
-    // :src="'images/' + this.upper_img"
 
     template:
     `
@@ -12,7 +11,7 @@ export default {
 
     data: function() {
         return {    
-            // matchedID: this.socketid == this.msg.id
+            
         }
     }
 

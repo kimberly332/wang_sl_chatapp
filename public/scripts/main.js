@@ -27,10 +27,11 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
         vm.messages.push(message);
     }
 
-    function r(allUsers) {
-        console.log('all users : ');
+    function updateUsers(allUsers) {
 
         vm.usersDict = allUsers;
+
+        console.log('all users : ');
         console.log(vm.usersDict);
     }
 
@@ -56,7 +57,8 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
             dispatchMessage(msg) {
 
                 // check if messsage is empty
-                if (this.message.trimStart() === "") {
+                // if (this.message.trimStart() === "") {
+                if (msg.content.trimStart() === "") {
                     console.log("no message: cannot dispatch message");
                 } else {
                     sendMsgAudio.play();
@@ -67,10 +69,9 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
                 }
             },
             
-            
-            clickInputArea(event) {
-                console.log('click textarea');
-            },
+            // clickInputArea() {
+            //     console.log('click textarea');
+            // },
 
             // when EmojiBtn component send content(emoji), update message to display it
             updateMessage(content) {
@@ -85,11 +86,8 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 
             // click join btn in login page
             clickJoinBtn() {
-                console.log('Join Chat ');
-                
+
                 this.hasLogin = true; 
-                
-                console.log(this.username);
                 
                 let select = document.getElementById("slct");
                 console.log(select.value);
@@ -97,6 +95,8 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
                 if (this.username === "") {
                     this.username = "Anonymous";
                 }
+
+                console.log(`${this.username} has joined chat`);
 
                 if (select.value === "0") { // user did not select favourite food
                     let rand = Math.floor(Math.random() * 10) + 1; // generate a random number 1-10
@@ -124,5 +124,5 @@ import DisplayAvatar from "./components/TheDisplayAvatarComponent.js";
 
     socket.addEventListener("connected", setUserId);
     socket.addEventListener('message', appendMessage);
-    socket.addEventListener('render', r);
+    socket.addEventListener('render', updateUsers);
 })();

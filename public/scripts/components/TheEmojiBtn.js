@@ -3,7 +3,7 @@ export default {
 
     template:
     `
-    <i class="fas fa-laugh" @click.prevent="clickEmojiBtn"></i>
+    <i class="fas fa-laugh" @click.prevent="triggerEmojiBtn"></i>
     `,
 
     data: function() {
@@ -13,7 +13,6 @@ export default {
     },
 
     created: function() {
-        console.log('emoji btn created');
 
         //create emoji picker
         let picker = new EmojiButton({
@@ -28,8 +27,8 @@ export default {
     },
 
     methods: {
-        clickEmojiBtn(event) {
-            console.log('click emoji btn');
+        triggerEmojiBtn(event) {
+
             this.emojiPicker.pickerVisible ? this.emojiPicker.hidePicker() : this.emojiPicker.showPicker(event.target);
         },
 
