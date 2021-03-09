@@ -1,5 +1,5 @@
 export default {
-    props: ['msg', 'username', 'avatar'],
+    props: ['msg', 'username', 'nickname', 'avatar'],
 
     template:
     `
@@ -9,7 +9,8 @@ export default {
 
     data: function() {
         return {    
-            msgEmpty: this.msg.trimStart() === ""
+            msgEmpty: this.msg.trimStart() === "",
+            displayName: !this.nickname ? this.username : this.nickname
         }
     },
 
@@ -19,7 +20,7 @@ export default {
         triggerSubmitByClick() {
             console.log("click .... send");
 
-            this.$emit('dispatchmsg', { content: this.msg, name: this.username, avatar: this.avatar });
+            this.$emit('dispatchmsg', { content: this.msg, name: this.displayName, avatar: this.avatar });
         }
 
     }

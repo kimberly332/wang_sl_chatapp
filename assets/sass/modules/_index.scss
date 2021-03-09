@@ -1,51 +1,51 @@
 body {
-    // max-width: 1280px;
-    #app {
 
-        .grid-container {
-            background: url("../images/bg.jpg") no-repeat center center fixed; 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
+    .grid-container {
+        background: url("../images/bg.webp") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 
-            display: grid;
-            height: 100vh;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; // 6 columns
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr; // 5 columns
-            grid-gap: 0.5em;
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; // 6 columns
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr; // 5 columns
+        grid-gap: 0.5em;
 
-            h1 {
-                text-align: center;
-                align-items: center;
-                grid-column: 3/5;
-                grid-row: 2/5;
+        h1 {
+            text-align: center;
+            align-items: center;
+            grid-column: 3/5;
+            grid-row: 2/5;
+        }
+
+        #login-form {
+            background-color: rgba(255, 255, 255, 0.7);
+            grid-column: 4/6;
+            grid-row: 2/5;
+            text-align: center;
+            align-items: center;
+            border-radius: 5px;
+
+            img {
+                width: 20%;
+                margin-top: 3.5%;
             }
 
-            #login-form {
-                background-color: rgba(255, 255, 255, 0.7);
-                grid-column: 4/6;
-                grid-row: 2/5;
-                text-align: center;
-                align-items: center;
-                border-radius: 5px;
-
-                img {
-                    width: 20%;
-                    margin-top: 8%;
-                }
-
-                h2 {
-                    margin-top: 2%;
-                }
-
+            h2 {
+                margin-top: 2%;
+            }
+        
+            form {
                 #uname {
                     font-family: 'Josefin Sans', serif;
                     font-size: 1rem;
                     height: 11%;
                     width: 70%;
-                    margin-top: 8%;
-                    padding-left: 5%;
+                    margin-top: 4%;
+                    padding: 3%;
+                    padding-left: 4%;
                     border-radius: 5px;
                 }
 
@@ -53,7 +53,8 @@ body {
                     font-family: 'Josefin Sans', serif;
                     font-size: 1rem;
                     flex: 1;
-                    padding-left: 5%;
+                    padding: 3%;
+                    padding-left: 4%;
                     cursor: pointer;
                 }
                 /* Remove IE arrow */
@@ -91,13 +92,15 @@ body {
 
                 .button {
                     // grid-column: 4/6;
+                    color: white;
                     grid-row: 4/5;
                     text-decoration: none;
                     font-family: 'Josefin Sans', serif;
+                    font-size: 0.8rem;
                     text-transform: uppercase;
                     background-color: rgb(74, 165, 132);
-                    padding: 5%;                
-                    margin: 5% 30%;
+                    padding: 3.5% 10%;                
+                    margin: 4% 30%;
                     cursor: pointer;
                     transition: 0.3s; 
                     border-radius: 50px;
@@ -110,5 +113,5 @@ body {
                 }
             }
         }
-    }    
+    }  
 }

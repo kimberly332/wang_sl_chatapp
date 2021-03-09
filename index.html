@@ -21,20 +21,23 @@
     <!-- title icon -->
     <link rel="shortcut icon" href="images/logo.svg" type="image/svg+xml">
 </head>
-<body id="bg">
-  <main id="app">
 
-    <!-- PART I: Login -->
-    <section v-if="hasLogin === false" class="grid-container">
-      <h1 class="hidden">Hey Foodie!</h1>
-      <!-- Hey Foodie Logo -->
-      <div id="login-form">
-        <img src="../images/logo.png" alt="Hey Foodies Logo">
-        <h2>Foodies Chat</h2>
-        <input v-model="username" type="text" id="uname" name="username" placeholder="Username">
+<body id="bg">
+
+  <!-- PART I: Login -->
+  <section class="grid-container">
+    <h1 class="hidden">Hey Foodie!</h1>
+    <!-- Hey Foodie Logo -->
+   
+    <div id="login-form">
+      <img src="../images/logo.png" alt="Hey Foodies Logo">
+      <h2>Foodies Chat</h2>
+
+      <form action="chat" method="GET">
+        <input v-model="username" type="text" id="uname" name="username" placeholder="Username"/>
         <div class="select">
-          <select name="slct" id="slct" required>
-            <option value="0" selected disabled>Favourite Food</option>
+          <select name="slct-avatar" id="slct">
+            <option value="0" selected>Favourite Food (Avatar)</option>
             <option value="1">Pizza</option>
             <option value="2">Taco</option>
             <option value="3">Hamburger</option>
@@ -47,44 +50,37 @@
             <option value="10">Cake</option>
           </select>
         </div> 
-        <a href="" class="button" @click.prevent="clickJoinBtn">Join</a>
-      </div>
-      <p class="copyright">&copy; 2021 Shan-Li Wang All Rights Reserved.</p>
-    </section>
 
-    <!-- PART II: Chat -->
-    <section v-else id="chat">
-      <section class="display-logo">
-        <img id="chat-logo" src="../images/logo.png" alt="Hey Foodies Logo">
-        <h2 id="chat-h2">Foodies Chat</h2>
-      </section>
+        <div class="select">
+          <select name="slct-room" id="slct">
+            <option value="0" selected>Favourite Cocktail (Chatroom)</option>
+            <option value="1">Kamikaze</option>
+            <option value="2">Mojito</option>
+            <option value="3">Pina Colada</option>
+            <option value="4">Long Beach Iced Tea</option>
+            <option value="5">Jintonic</option>
+            <option value="6">Manhattan</option>
+            <option value="7">Margretta</option>
+            <option value="8">Bloody Mary</option>
+            <option value="9">Blue Lagoon</option>
+            <option value="10">Tom Collins</option>
+          </select>
+        </div> 
+        <!-- <a href="" class="button" @click.prevent="clickJoinBtn">Join</a> -->
+        <button type="submit" class="button">Join</button>
+      </form>
 
-      <section class="display-avatar">
-        <displayavatar v-for="(val, key) in usersDict" :username="val[0]" :avatar="val[1]" :key="key"></displayavatar>
-      </section>
-
-      <!-- vue custom message component goes here -->
-      <section class="messages">
-        <ul id="messages" v-for="message in messages">
-          <newmessage :msg="message" :socketid="socketID"></newmessage>
-          <newavatar :msg="message" :socketid="socketID"></newavatar>
-        </ul>
-      </section>
-
-      <section class="message-wrapper">
-        <textarea @keypress.enter="triggerSubmitByEnter" v-model="message" class="text-message" placeholder="Start your message here... you can also press ENTER to send !"></textarea>
-        <submitbtn :key="message" :msg="message" :username="username" :avatar="avatar" @dispatchmsg="dispatchMessage"></submitbtn>
-        <emojibtn @addemojitomessage="updateMessage"></emojibtn>
-      </section>
-    </section>
-  
-  </main>
+    </div>
+    <!-- <p class="copyright">&copy; 2021 Shan-Li Wang All Rights Reserved.</p> -->
+  </section>
 
   <!-- <script defer type="module" src="scripts/login.js"></script> -->
-  <script src="/socket.io/socket.io.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/emoji-button@latest/dist/index.min.js"></script>
-  <script defer type="module" src="scripts/main.js"></script>
+  <script defer type="module" src="scripts/main.js"></script> -->
+
+  <script defer type="module" src="scripts/login.js"></script>
 
 </body>
 </html>
