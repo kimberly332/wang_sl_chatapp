@@ -73,9 +73,20 @@ a {
   padding-right: 9%;
   margin-top: -6.5%;
 }
+.messages #messages .robot-message p {
+  width: 100%;
+  float: left;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  padding-top: 1%;
+  color: gray;
+  font-family: "Josefin Sans", serif;
+  font-weight: 500;
+}
 
-body #app .grid-container {
-  background: url("../images/bg.jpg") no-repeat center center fixed;
+body .grid-container {
+  background: url("../images/bg.webp") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -86,51 +97,55 @@ body #app .grid-container {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 0.5em;
 }
-body #app .grid-container h1 {
+body .grid-container h1 {
   text-align: center;
   align-items: center;
   grid-column: 3/5;
   grid-row: 2/5;
 }
-body #app .grid-container #login-form {
+body .grid-container #login-form {
   background-color: rgba(255, 255, 255, 0.7);
   grid-column: 4/6;
   grid-row: 2/5;
   text-align: center;
   align-items: center;
   border-radius: 5px;
+}
+body .grid-container #login-form img {
+  width: 20%;
+  margin-top: 3.5%;
+}
+body .grid-container #login-form h2 {
+  margin-top: 2%;
+}
+body .grid-container #login-form form {
   /* Remove IE arrow */
   /* Custom Select */
   /* Arrow */
   /* Transition */
 }
-body #app .grid-container #login-form img {
-  width: 20%;
-  margin-top: 8%;
-}
-body #app .grid-container #login-form h2 {
-  margin-top: 2%;
-}
-body #app .grid-container #login-form #uname {
+body .grid-container #login-form form #uname {
   font-family: "Josefin Sans", serif;
   font-size: 1rem;
   height: 11%;
   width: 70%;
-  margin-top: 8%;
-  padding-left: 5%;
+  margin-top: 4%;
+  padding: 3%;
+  padding-left: 4%;
   border-radius: 5px;
 }
-body #app .grid-container #login-form select {
+body .grid-container #login-form form select {
   font-family: "Josefin Sans", serif;
   font-size: 1rem;
   flex: 1;
-  padding-left: 5%;
+  padding: 3%;
+  padding-left: 4%;
   cursor: pointer;
 }
-body #app .grid-container #login-form select::-ms-expand {
+body .grid-container #login-form form select::-ms-expand {
   display: none;
 }
-body #app .grid-container #login-form .select {
+body .grid-container #login-form form .select {
   position: relative;
   display: flex;
   width: 70%;
@@ -141,7 +156,7 @@ body #app .grid-container #login-form .select {
   margin-left: 15%;
   border-radius: 0.25em;
 }
-body #app .grid-container #login-form .select::after {
+body .grid-container #login-form form .select::after {
   content: "▼";
   position: absolute;
   top: 0;
@@ -152,28 +167,30 @@ body #app .grid-container #login-form .select::after {
   pointer-events: none;
   transition: 0.3s all ease;
 }
-body #app .grid-container #login-form .select:hover::after {
+body .grid-container #login-form form .select:hover::after {
   color: #f2c66d;
 }
-body #app .grid-container #login-form .button {
+body .grid-container #login-form form .button {
+  color: white;
   grid-row: 4/5;
   text-decoration: none;
   font-family: "Josefin Sans", serif;
+  font-size: 0.8rem;
   text-transform: uppercase;
   background-color: #4aa584;
-  padding: 5%;
-  margin: 5% 30%;
+  padding: 3.5% 10%;
+  margin: 4% 30%;
   cursor: pointer;
   transition: 0.3s;
   border-radius: 50px;
   overflow: auto;
 }
-body #app .grid-container #login-form .button:hover {
+body .grid-container #login-form form .button:hover {
   background-color: #f2c66d;
   color: #495868;
 }
 
-body #app .grid-container .copyright {
+body .grid-container .copyright {
   grid-column: 1/7;
   grid-row: 5/6;
   text-align: center;
@@ -186,90 +203,114 @@ body #app .grid-container .copyright {
 }
 
 @media only screen and (max-width: 768px) {
-  #bg #app .grid-container #login-form {
+  body .grid-container #login-form {
     grid-column: 2/6;
     grid-row: 2/5;
   }
-  #bg #app .grid-container #login-form #nname {
+  body .grid-container #login-form form #nname {
     margin-top: 6%;
     padding-left: 5%;
   }
-  #bg #app .grid-container #login-form .button {
+  body .grid-container #login-form form .button {
     padding: 3%;
     margin: 4% 30%;
   }
-  #bg #app p {
+  body p {
     margin-top: 12%;
   }
-  #bg #app #chat .message-wrapper .button {
+
+  .chat-bg #app .message-wrapper .button {
     margin-top: 1.5%;
     width: 65%;
   }
-  #bg #app #chat .message-wrapper i {
+  .chat-bg #app .message-wrapper i {
     margin-top: 1.5%;
   }
 }
 @media only screen and (max-width: 375px) {
-  #bg #app .grid-container #login-form {
+  body .grid-container #login-form {
     background-color: rgba(255, 255, 255, 0.5);
     grid-column: 1/7;
     grid-row: 1/6;
   }
-  #bg #app .grid-container #login-form svg {
+  body .grid-container #login-form svg {
     margin-top: 20%;
   }
-  #bg #app .grid-container #login-form #uname {
+  body .grid-container #login-form form #uname {
     margin-top: 6%;
     padding-left: 5%;
     height: 7%;
   }
-  #bg #app .grid-container #login-form .select {
+  body .grid-container #login-form form .select {
     height: 7%;
   }
-  #bg #app .grid-container #login-form .button {
+  body .grid-container #login-form form .button {
     padding: 5%;
     margin: 5% 30%;
   }
-  #bg p {
+
+  .chat-bg p {
     margin-top: 20%;
   }
 }
-body {
+.chat-bg {
   background-color: rgba(255, 165, 112, 0.5);
   background-image: url("../images/chat-bg.png");
   background-size: 500px 500px;
 }
-body #app #chat {
+.chat-bg #app {
   display: grid;
   height: 100vh;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 0.5em;
 }
-body #app #chat .display-logo {
+.chat-bg #app .display-logo {
   text-align: center;
   align-items: center;
   background-color: #ffeee5;
   grid-row: 1/2;
 }
-body #app #chat .display-logo #chat-logo {
+.chat-bg #app .display-logo #chat-logo {
   width: 6%;
   margin-top: 1.2%;
 }
-body #app #chat .display-logo #chat-h2 {
+.chat-bg #app .display-logo #chat-h2 {
   font-size: 1.2rem;
   margin-top: 0.3%;
   margin-bottom: 1.2%;
 }
-body #app #chat .display-avatar {
+.chat-bg #app .display-logo i {
+  padding: 0;
+  margin-top: -9.5%;
+  margin-right: 1%;
+  font-size: 1.8rem;
+  float: right;
+  color: #4aa584;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.chat-bg #app .display-logo i:hover {
+  transform: scale(0.85);
+}
+.chat-bg #app .display-logo .mute {
+  color: #495868;
+}
+.chat-bg #app .display-logo .mute:hover {
+  transform: scale(0.85);
+}
+.chat-bg #app .display-avatar {
   text-align: center;
   margin-left: 10%;
   margin-top: 1%;
 }
-body #app #chat .display-avatar div {
+.chat-bg #app .display-avatar div {
   float: left;
   margin-right: 3%;
+  text-align: center;
+  align-items: center;
 }
-body #app #chat .display-avatar div .display-name {
+.chat-bg #app .display-avatar div .display-name {
+  font-size: 0.9rem;
   font-family: "Josefin Sans", serif;
   margin: 0;
   color: #495868;
@@ -277,11 +318,45 @@ body #app #chat .display-avatar div .display-name {
   margin-top: 3px;
   margin-bottom: 5%;
 }
-body #app #chat .message-wrapper {
+.chat-bg #app .display-avatar div .typing {
+  opacity: 0;
+  width: 65px;
+  font-size: 0.75rem;
+  color: white;
+  font-weight: bolder;
+  background-color: #4aa584;
+  padding: 4% 2%;
+  border-radius: 10px;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+.chat-bg #app input {
+  border-radius: 5px;
+  grid-row: 5/6;
+  width: 15%;
+  height: 50%;
+  margin-left: 10%;
+  margin-top: 2.5%;
+  font-family: "Josefin Sans", serif;
+  font-size: 1rem;
+  padding: 10px 15px;
+  line-height: 25px;
+}
+.chat-bg #app .message-wrapper {
   grid-row: 6/7;
   text-align: center;
 }
-body #app #chat .message-wrapper .text-message {
+.chat-bg #app .message-wrapper .text-message {
   font-family: "Josefin Sans", serif;
   font-size: 1rem;
   height: 100px;
@@ -291,33 +366,33 @@ body #app #chat .message-wrapper .text-message {
   padding: 10px 15px;
   line-height: 25px;
 }
-body #app #chat .message-wrapper .button {
+.chat-bg #app .message-wrapper .button {
   text-align: center;
-  height: 50px;
+  height: 60px;
   width: 75%;
   color: white;
   font-family: "Josefin Sans", serif;
   font-size: 1.2rem;
   font-weight: 600;
-  padding-top: 0.5%;
+  padding-top: 1%;
   margin-top: 0.5%;
   margin-bottom: 1.5%;
   margin-left: 8.5%;
   transition: 0.3s;
   border-radius: 50px;
 }
-body #app #chat .message-wrapper .cansend {
+.chat-bg #app .message-wrapper .cansend {
   background-color: #4aa584;
   cursor: pointer;
 }
-body #app #chat .message-wrapper .cansend:hover {
+.chat-bg #app .message-wrapper .cansend:hover {
   background-color: #495868;
   color: #f2c66d;
 }
-body #app #chat .message-wrapper .cannotsend {
+.chat-bg #app .message-wrapper .cannotsend {
   background-color: grey;
 }
-body #app #chat .message-wrapper i {
+.chat-bg #app .message-wrapper i {
   float: right;
   color: #4aa584;
   cursor: pointer;
@@ -326,7 +401,7 @@ body #app #chat .message-wrapper i {
   margin-right: 10%;
   transition: 0.3s;
 }
-body #app #chat .message-wrapper i:hover {
+.chat-bg #app .message-wrapper i:hover {
   color: #495868;
 }
 

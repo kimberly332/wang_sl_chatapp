@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- <link rel="stylesheet" href="css/reset.css"> -->
+  <link rel="stylesheet" href="css/main.css">
+    
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <!-- Josefin Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <!-- Josefin Slab -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Import Font Awesome -->
+  <script src="https://kit.fontawesome.com/65f54478f1.js" crossorigin="anonymous"></script>
+  
+
+  <link rel="shortcut icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body class="chat-bg">
+
+  <!-- PART II: Chat -->
+  <main id="app">
+    <section class="display-logo">
+      <img id="chat-logo" src="../images/logo.png" alt="Hey Foodies Logo">
+      <h2 id="chat-h2">Room: {{roomName}} </h2>
+      <i class="fas fa-volume-down" :key="muted" :class="{ 'mute': muted }" @click="toggleMuted"></i>
+      <!-- <i class="fas fa-volume-down mute"></i> -->
+    </section>
+      
+    <section class="display-avatar">
+      <!-- <displayavatar v-for="(val, key) in usersDict" :username="val[0]" :avatar="val[1]" :is_typing="val[2]" :key="key"></displayavatar> -->
+      <displayavatar v-for="(val, key) in users" :userinfo="val" :key="key"></displayavatar>
+    </section>
+      
+    <!-- vue custom message component goes here -->
+    <section class="messages">
+      <ul id="messages" v-for="message in messages">
+        <newmessage :msg="message" :socketid="socketID" :hasmuted="muted"></newmessage>
+        <newavatar v-if="message.id!=='ROBOT_MESSAGE'" :msg="message" :socketid="socketID"></newavatar>
+      </ul>
+    </section>
+
+    <!-- editing nickname -->
+    <input type="text" placeholder="Edit Your Nickname" v-model="nickname" @input="nicknameInputHandler">
+    <!-- <p>nickname is: {{ nickname }}</p> -->
+
+    <!-- <p>Someone is typing</p> -->
+    <section class="message-wrapper">      
+      <!-- <textarea @keypress.enter="triggerSubmitByEnter" v-model="message" class="text-message" placeholder="Start your message here... you can also press ENTER to send !"></textarea> -->
+      <textarea @keypress="keyPressHandler" v-model="message" class="text-message" placeholder="Start your message here... you can also press ENTER to send !"></textarea>
+      <submitbtn :key="message" :msg="message" :username="username" :nickname="nickname" :avatar="avatar" @dispatchmsg="dispatchMessage"></submitbtn>
+      <emojibtn @addemojitomessage="updateMessage"></emojibtn>
+    </section>
+
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emoji-button@latest/dist/index.min.js"></script>
+  <script defer type="module" src="scripts/main.js"></script>
+    
+</body>
+</html>
+
+
+
+ 

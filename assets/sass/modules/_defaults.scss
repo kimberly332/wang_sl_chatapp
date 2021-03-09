@@ -87,6 +87,23 @@ a {
             margin-top: -6.5%;
         }
 
+        .robot-message {
+            p {
+                width: 100%;
+                float: left;
+                margin: auto;
+                text-align: center;
+                align-items: center;
+                padding-top: 1%;
+                color: gray;
+                font-family: 'Josefin Sans', serif;
+                font-weight: 500;
+                // background-color: #495868;
+                // color: #f2c66d;
+                // border-radius: 10px;
+            }
+        }
+
     }
 }
 
